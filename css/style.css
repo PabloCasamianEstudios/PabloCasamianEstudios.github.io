@@ -541,6 +541,172 @@ span{
 }
 
 /* PROJECTS */
+.projects {
+    background-color: var(--second-bg-color);
+    padding: 10rem 12%;
+    overflow: hidden;
+}
+
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.projects-carousel {
+    display: flex;
+    gap: 3rem;
+    padding: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 3rem;
+    scrollbar-width: none; /* Firefox */
+}
+
+.projects-carousel::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.project-card {
+    min-width: 300px;
+    max-width: 350px;
+    background-color: var(--bg-color);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    margin: 0 1rem;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(102, 255, 72, 0.2);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 2rem;
+}
+
+.project-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--main-color);
+}
+
+.project-content p {
+    font-size: 1.4rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.tech-pill {
+    background-color: rgba(102, 255, 72, 0.1);
+    color: var(--main-color);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    border: 1px solid var(--main-color);
+}
+
+.project-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.project-buttons .btn-small {
+    padding: 0.8rem 1.6rem;
+    font-size: 1.3rem;
+}
+
+.project-buttons .btn-outline {
+    background-color: transparent;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    box-shadow: none;
+}
+
+.project-buttons .btn-outline:hover {
+    background-color: var(--main-color);
+    color: black;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.carousel-btn {
+    background-color: var(--main-color);
+    color: black;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--main-color);
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 1rem;
+}
+
+.carousel-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(102, 255, 72, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dots .dot.active {
+    background-color: var(--main-color);
+    transform: scale(1.2);
+}
+
 
 /* FOOTER */
 
@@ -600,4 +766,15 @@ span{
     text-align: center;
     font-size: 16px;
     color: white;
+}
+
+
+@media (max-width: 768px) {
+    .project-card {
+        min-width: 280px;
+    }
+    
+    .carousel-controls {
+        margin-top: 1rem;
+    }
 }
