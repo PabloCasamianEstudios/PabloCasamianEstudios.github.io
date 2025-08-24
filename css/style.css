@@ -273,6 +273,10 @@ span{
     }
 }
 
+.text-intro {
+    text-wrap: balance;
+}
+
 /* SECCIONES */
 
 .heading {
