@@ -1,0 +1,38 @@
+@use '../../styles/variables' as *;
+
+.section-folder {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.folder-legend {
+    align-self: flex-start;
+    padding: 4px 14px;
+    background: var(--bg-folder);
+    border: 2px solid var(--border);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-main);
+    position: relative;
+    z-index: 2;
+    margin-bottom: -2px;
+    transition: background-color 0.4s, border-color 0.4s;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.folder-body {
+    background: var(--bg-folder);
+    border: 2px solid var(--border);
+    border-radius: 0 var(--radius) var(--radius) var(--radius);
+    box-shadow: 4px 4px 0px var(--border);
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+    width: 100%;
+}

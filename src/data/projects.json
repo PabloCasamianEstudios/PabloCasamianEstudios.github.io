@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "title": "Minecraft Mornings",
+        "description": "Bot de Minecraft que republica en Instagram los mejores posts de r/Minecraft [Inactivo].",
+        "year": "2021",
+        "tags": ["Python"],
+        "codeHref": "",
+        "demoHref": "https://www.instagram.com/minecraft_mornings/",
+        "icon": "box",
+        "image": "mornings.png"
+    },
+    {
+        "id": 2,
+        "title": "Pixollect",
+        "description": "Mantén un registro virtual de tu colección de videojuegos en un solo sitio.",
+        "year": "2025",
+        "tags": ["Vue.js", "Laravel"],
+        "codeHref": "https://github.com/PabloCasamianEstudios/Pixollect",
+        "demoHref": "",
+        "icon": "gamepad",
+        "image": "pixollect.png"
+    },
+    {
+        "id": 3,
+        "title": "FreeHub",
+        "description": "Recursos y herramientas gratuitas para desarrolladores.",
+        "year": "2025",
+        "tags": ["React", "TS"],
+        "codeHref": "https://github.com/YingWasTaken/FreeHub",
+        "demoHref": "https://free-hub-puce.vercel.app/",
+        "icon": "box",
+        "image": "freehub.png"
+    },
+    {
+        "id": 4,
+        "title": "Boulder Quest",
+        "description": "Juego de cartas web para hacer tus sesiones de escalada más divertidas con retos aleatorios.",
+        "year": "2026",
+        "tags": ["React", "TS"],
+        "codeHref": "https://github.com/YingWasTaken/boulder-quest",
+        "demoHref": "https://boulder-quest.vercel.app/",
+        "icon": "box",
+        "image": "boulderquest.png"
+    },
+    {
+        "id": 5,
+        "title": "Lock In",
+        "description": "Gamificación del entrenamiento físico en formato de juego de rol utilizando una IA gratuita. (Demo alojada de forma gratuita)",
+        "year": "2026",
+        "tags": ["React", "Springboot", "Groq", "JPA"],
+        "codeHref": "https://github.com/PabloCasamianEstudios/Lock-In-Training-App",
+        "demoHref": "https://lock-in-training-app.vercel.app/",
+        "icon": "box",
+        "image": "lockin.png"
+    }
+]

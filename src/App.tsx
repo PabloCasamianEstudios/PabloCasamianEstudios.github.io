@@ -1,13 +1,28 @@
-import './App.scss'
+import ThemeToggle from './components/ThemeToggle/ThemeToggle';
+import Sidebar from './components/Sidebar/Sidebar';
+import Navigation from './components/Navigation/Navigation';
+import HomeTab from './components/Tabs/HomeTab';
+import ProjectsTab from './components/Tabs/ProjectsTab';
+import SkillsTab from './components/Tabs/SkillsTab';
+import useTabs from './hooks/useTabs';
+import './components/Tabs/Tabs.scss';
+import './App.scss';
 
-function App() {
-  return (
-    <div className="app">
-      <header className="hello-world">
-        <h1>Hello World</h1>
-      </header>
-    </div>
-  )
+export default function App() {
+    const { activeTab, switchTab } = useTabs('home');
+
+    return (
+        <div className="app-shell">
+            <ThemeToggle />
+            <Sidebar />
+            <main>
+                <Navigation activeTab={activeTab} onTabChange={switchTab} />
+                <div className="tab-content">
+                    {activeTab === 'home' && <HomeTab />}
+                    {activeTab === 'projects' && <ProjectsTab />}
+                    {activeTab === 'skills' && <SkillsTab />}
+                </div>
+            </main>
+        </div>
+    );
 }
-
-export default App

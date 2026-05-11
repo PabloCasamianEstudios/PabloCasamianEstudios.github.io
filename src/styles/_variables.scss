@@ -1,18 +1,29 @@
-// src/styles/_variables.scss
-$primary-color: #007aff;
-$secondary-color: #5856d6;
-$accent-color: #ff2d55;
-$bg-color: #0a0a0c;
-$card-bg: rgba(255, 255, 255, 0.05);
-$text-primary: #ffffff;
-$text-secondary: #a1a1a6;
-$glass-border: rgba(255, 255, 255, 0.1);
-$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$bg-page: #f0f2f5;
+$bg-folder: #f8fafc;
+$bg-nav: #e2e8f0;
+$accent: #ABFFB6;
+$text-main: #1e293b;
+$text-dim: #64748b;
+$border: #1e293b;
+$radius: 12px;
+$font-code: 'JetBrains Mono', monospace;
+$icon-color: #1e293b;
+
+$bg-page-dark: #0f172a;
+$bg-folder-dark: #1e293b;
+$bg-nav-dark: #334155;
+$accent-dark: #34d399;
+$text-main-dark: #f1f5f9;
+$text-dim-dark: #94a3b8;
+$border-dark: #f1f5f9;
+$icon-color-dark: #ffffff;
+
+$transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
 
 @mixin glassmorphism {
-  background: $card-bg;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid $glass-border;
-  border-radius: 16px;
+    background: var(--bg-folder);
+    border: 2px solid var(--border);
+    border-radius: $radius;
+    box-shadow: 4px 4px 0px var(--border);
+    transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
 }
