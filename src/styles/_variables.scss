@@ -1,0 +1,18 @@
+// src/styles/_variables.scss
+$primary-color: #007aff;
+$secondary-color: #5856d6;
+$accent-color: #ff2d55;
+$bg-color: #0a0a0c;
+$card-bg: rgba(255, 255, 255, 0.05);
+$text-primary: #ffffff;
+$text-secondary: #a1a1a6;
+$glass-border: rgba(255, 255, 255, 0.1);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+@mixin glassmorphism {
+  background: $card-bg;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid $glass-border;
+  border-radius: 16px;
+}
