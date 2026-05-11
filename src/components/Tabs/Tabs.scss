@@ -158,9 +158,38 @@
     &:hover {
         transform: translateY(-2px);
     }
+}
 
-    &-primary {
+.skill-category-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 35px 0 15px;
+    font-family: var(--font-code);
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &:first-child {
+        margin-top: 5px;
+    }
+
+    &::after {
+        content: '';
+        flex-grow: 1;
+        height: 2px;
+        background: var(--border);
+        opacity: 0.15;
+    }
+
+    &::before {
+        content: '';
+        width: 4px;
+        height: 14px;
         background: var(--accent);
-        color: #1e293b;
+        border: 1.5px solid var(--border);
+        border-radius: 2px;
     }
 }
