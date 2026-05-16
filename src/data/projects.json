@@ -2,7 +2,7 @@
     {
         "id": 1,
         "title": "Minecraft Mornings",
-        "description": "Bot de Minecraft que republica en Instagram los mejores posts de r/Minecraft [Inactivo].",
+        "description": "Bot de Minecraft que republica contenido de calidad en Instagram, extraido con Python del Reddit r/Minecraft [Inactivo].",
         "year": "2021",
         "tags": ["Python"],
         "codeHref": "",
@@ -13,7 +13,7 @@
     {
         "id": 2,
         "title": "Pixollect",
-        "description": "Mantén un registro virtual de tu colección de videojuegos en un solo sitio.",
+        "description": "Aplicación web con la que mantener un registro virtual de tu colección de videojuegos en un solo sitio. Es como un excel gaming, pero con esteroides. Compara juegos, obten recomendaciones basadas en tus gustos y explora las coleciones de otros usuarios, junto con estadísticas de los mismos.",
         "year": "2025",
         "tags": ["Vue.js", "Laravel"],
         "codeHref": "https://github.com/PabloCasamianEstudios/Pixollect",
@@ -24,7 +24,7 @@
     {
         "id": 3,
         "title": "FreeHub",
-        "description": "Recursos y herramientas gratuitas para desarrolladores.",
+        "description": "Página web en la que recopilo recursos y herramientas gratuitas para desarrolladores.",
         "year": "2025",
         "tags": ["React", "TS"],
         "codeHref": "https://github.com/YingWasTaken/FreeHub",
@@ -35,7 +35,7 @@
     {
         "id": 4,
         "title": "Boulder Quest",
-        "description": "Juego de cartas web para hacer tus sesiones de escalada más divertidas con retos aleatorios.",
+        "description": "Para darle más variedad a mis sesiones de escalada, creé un juego de cartas web con retos aleatorios.",
         "year": "2026",
         "tags": ["React", "TS"],
         "codeHref": "https://github.com/YingWasTaken/boulder-quest",
@@ -46,7 +46,7 @@
     {
         "id": 5,
         "title": "Lock In",
-        "description": "Gamificación del entrenamiento físico en formato de juego de rol utilizando una IA gratuita. (Demo alojada de forma gratuita)",
+        "description": "Gamificación del entrenamiento físico, Lock In busca convertir el gimnasio en una experiencia más divertida utilizando IA, rol y progreso. (Demo alojada de forma gratuita)",
         "year": "2026",
         "tags": ["React", "Springboot", "Groq", "JPA"],
         "codeHref": "https://github.com/PabloCasamianEstudios/Lock-In-Training-App",
