@@ -1,6 +1,7 @@
 import ThemeToggle from './components/ThemeToggle/ThemeToggle';
 import Sidebar from './components/Sidebar/Sidebar';
 import Navigation from './components/Navigation/Navigation';
+import Footer from './components/Footer/Footer';
 import HomeTab from './components/Tabs/HomeTab';
 import ProjectsTab from './components/Tabs/ProjectsTab';
 import SkillsTab from './components/Tabs/SkillsTab';
@@ -22,6 +23,7 @@ export default function App() {
                     {activeTab === 'projects' && <ProjectsTab />}
                     {activeTab === 'skills' && <SkillsTab />}
                 </div>
+                <Footer />
             </main>
         </div>
     );
