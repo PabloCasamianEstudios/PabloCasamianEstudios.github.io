@@ -1,4 +1,5 @@
 import './Navigation.scss';
+import { useLang } from '../../context/LanguageContext';
 
 interface NavigationProps {
     activeTab: string;
@@ -6,17 +7,23 @@ interface NavigationProps {
 }
 
 export default function Navigation({ activeTab, onTabChange }: NavigationProps) {
-    const tabs = ['home', 'projects', 'skills'];
+    const { t } = useLang();
+
+    const tabs: { key: string; label: string }[] = [
+        { key: 'home',     label: t('nav.home') },
+        { key: 'projects', label: t('nav.projects') },
+        { key: 'skills',   label: t('nav.skills') },
+    ];
 
     return (
         <nav className="nav-wrapper">
             {tabs.map(tab => (
                 <button 
-                    key={tab}
-                    className={`nav-btn ${activeTab === tab ? 'active' : ''}`}
-                    onClick={() => onTabChange(tab)}
+                    key={tab.key}
+                    className={`nav-btn ${activeTab === tab.key ? 'active' : ''}`}
+                    onClick={() => onTabChange(tab.key)}
                 >
-                    {tab}
+                    {tab.label}
                 </button>
             ))}
         </nav>

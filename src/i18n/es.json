@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "home": "home",
+    "projects": "proyectos",
+    "skills": "habilidades"
+  },
+  "home": {
+    "greeting": "¡Hola! Soy Pablo, desarrollador Full Stack, y tengo",
+    "yearsOld": "años",
+    "p1": "Desde pequeño siempre me ha gustado crear cosas. Con el tiempo descubrí en la programación la mejor forma de convertir ideas en proyectos reales.",
+    "p2": "Actualmente trabajo desarrollando software apoyado por IA, utilizando herramientas como VS Code y GitHub Copilot para acelerar procesos, experimentar y construir soluciones de forma más eficiente.",
+    "experienceTitle": "experience.log",
+    "exp1": {
+      "period": "2026 - Actualidad",
+      "role": "Desarrollador Junior",
+      "desc": "Desarrollo de software para el sector asegurador."
+    },
+    "exp2": {
+      "period": "2025 - 2026",
+      "role": "GS DAM (Multiplataforma)",
+      "desc": "Prácticas en"
+    },
+    "exp3": {
+      "period": "2023 - 2025",
+      "role": "GS DAW (Desarrollo Web)",
+      "desc": "Prácticas en"
+    }
+  },
+  "skills": {
+    "editors": "editores",
+    "languages": "lenguajes",
+    "frameworks": "frameworks",
+    "infrastructure": "infraestructura",
+    "spanish": "Español — Nativo",
+    "english": "Inglés — B2 Certified",
+    "teamwork": "Trabajo en Equipo",
+    "adaptability": "Adaptabilidad",
+    "problemSolving": "Resolución de problemas"
+  },
+  "projects": {
+    "code": "código",
+    "demo": "demo"
+  },
+  "contact": {
+    "copied": "¡Email copiado!"
+  }
+}

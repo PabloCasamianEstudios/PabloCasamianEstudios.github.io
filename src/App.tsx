@@ -1,4 +1,5 @@
 import ThemeToggle from './components/ThemeToggle/ThemeToggle';
+import LangToggle from './components/LangToggle/LangToggle';
 import Sidebar from './components/Sidebar/Sidebar';
 import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
@@ -15,6 +16,7 @@ export default function App() {
     return (
         <div className="app-shell">
             <ThemeToggle />
+            <LangToggle />
             <Sidebar />
             <main>
                 <Navigation activeTab={activeTab} onTabChange={switchTab} />

@@ -1,12 +1,27 @@
-import { Mail, MessageCircle, Download } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, MessageCircle, Download, Check } from 'lucide-react';
 import Folder from '../Folder/Folder';
+import { useLang } from '../../context/LanguageContext';
+
+const EMAIL = 'casamianquinteropablo@gmail.com';
 
 export default function ContactCard() {
+    const [copied, setCopied] = useState(false);
+    const { t } = useLang();
+
+    const handleEmailClick = () => {
+        navigator.clipboard.writeText(EMAIL).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2500);
+        });
+    };
+
     const socialLinks = [
         { 
             icon: <Mail size={18} />, 
-            href: 'mailto:pablocasamianestudios@gmail.com', 
-            title: 'Email' 
+            href: `mailto:${EMAIL}`, 
+            title: 'Email',
+            onClick: handleEmailClick,
         },
         { 
             icon: (
@@ -15,7 +30,7 @@ export default function ContactCard() {
                 </svg>
             ), 
             href: 'https://www.linkedin.com/in/pablo-casami%C3%A1n-quintero-b59b37357/', 
-            title: 'LinkedIn' 
+            title: 'LinkedIn',
         },
         { 
             icon: (
@@ -24,7 +39,7 @@ export default function ContactCard() {
                 </svg>
             ), 
             href: 'https://github.com/PabloCasamianEstudios', 
-            title: 'GitHub' 
+            title: 'GitHub',
         },
         { 
             icon: (
@@ -33,27 +48,57 @@ export default function ContactCard() {
                 </svg>
             ), 
             href: 'https://instagram.com/pablocasamian', 
-            title: 'Instagram' 
+            title: 'Instagram',
         },
         { 
             icon: <MessageCircle size={18} />, 
             href: 'https://discord.gg/7v23cAM8MS', 
-            title: 'Discord' 
+            title: 'Discord',
         },
         { 
             icon: <Download size={18} />, 
             href: '/cv.pdf', 
             title: 'Descargar CV', 
-            download: true 
+            download: true,
         },
     ];
 
     return (
         <Folder legend="contact">
+            <div
+                style={{
+                    position: 'absolute',
+                    bottom: '12px',
+                    left: '50%',
+                    transform: copied ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(12px)',
+                    opacity: copied ? 1 : 0,
+                    pointerEvents: 'none',
+                    transition: 'opacity 0.25s ease, transform 0.25s ease',
+                    background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+                    border: '1px solid rgba(100, 220, 180, 0.35)',
+                    borderRadius: '8px',
+                    padding: '6px 12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '12px',
+                    color: '#64dcb4',
+                    whiteSpace: 'nowrap',
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+                    zIndex: 999,
+                }}
+                aria-live="polite"
+                aria-atomic="true"
+            >
+                <Check size={13} strokeWidth={3} />
+                {t('contact.copied')}
+            </div>
+
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '8px'
+                gap: '8px',
+                position: 'relative',
             }}>
                 {socialLinks.map((link, i) => (
                     <a 
@@ -64,6 +109,7 @@ export default function ContactCard() {
                         target={link.download ? undefined : "_blank"}
                         rel="noreferrer"
                         download={link.download}
+                        onClick={link.onClick}
                     >
                         {link.icon}
                     </a>

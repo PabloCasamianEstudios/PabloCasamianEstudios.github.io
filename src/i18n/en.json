@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "home": "home",
+    "projects": "projects",
+    "skills": "skills"
+  },
+  "home": {
+    "greeting": "Hi! I'm Pablo, a Full Stack developer, and I'm",
+    "yearsOld": "years old",
+    "p1": "I've always loved creating things since I was a kid. Over time I discovered that programming is the best way to turn ideas into real projects.",
+    "p2": "I currently work developing AI-assisted software, using tools like VS Code and GitHub Copilot to speed up processes, experiment, and build solutions more efficiently.",
+    "experienceTitle": "experience.log",
+    "exp1": {
+      "period": "2026 - Present",
+      "role": "Junior Developer",
+      "desc": "Software development for the insurance industry."
+    },
+    "exp2": {
+      "period": "2025 - 2026",
+      "role": "HND in Multiplatform App Dev",
+      "desc": "Internship at"
+    },
+    "exp3": {
+      "period": "2023 - 2025",
+      "role": "HND in Web Development",
+      "desc": "Internship at"
+    }
+  },
+  "skills": {
+    "editors": "editors",
+    "languages": "languages",
+    "frameworks": "frameworks",
+    "infrastructure": "infrastructure",
+    "spanish": "Spanish — Native",
+    "english": "English — B2 Certified",
+    "teamwork": "Teamwork",
+    "adaptability": "Adaptability",
+    "problemSolving": "Problem Solving"
+  },
+  "projects": {
+    "code": "code",
+    "demo": "demo"
+  },
+  "contact": {
+    "copied": "Email copied!"
+  }
+}
