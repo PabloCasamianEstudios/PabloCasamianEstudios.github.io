@@ -58,7 +58,7 @@ export default function ContactCard() {
         { 
             icon: <Download size={18} />, 
             href: '/cv.pdf', 
-            title: 'Descargar CV', 
+            title: t('contact.downloadCv'), 
             download: true,
         },
     ];
