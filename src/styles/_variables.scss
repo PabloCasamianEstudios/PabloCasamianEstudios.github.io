@@ -18,7 +18,7 @@ $text-dim-dark: #a3a3a3;
 $border-dark: #e5e5e5;
 $icon-color-dark: #ffffff;
 
-$transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+$transition: all 0.12s cubic-bezier(0, 0, 0.2, 1);
 
 @mixin glassmorphism {
     background: var(--bg-folder);
