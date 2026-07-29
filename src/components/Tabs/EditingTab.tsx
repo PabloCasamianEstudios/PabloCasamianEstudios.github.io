@@ -21,6 +21,42 @@ const SHUFFLED_ORDER: Record<number, number> = {
     6: 9, 11: 10, 4: 11, 13: 12, 8: 13, 1: 14, 10: 15, 5: 16
 };
 
+function EditingCardItem({ item, lang, onClick }: { item: EditingItem; lang: string; onClick: () => void }) {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const description = lang === 'en' && item.description_en ? item.description_en : item.description;
+
+    return (
+        <div
+            className={`masonry-item ${!isLoaded ? 'is-loading' : ''}`}
+            onClick={onClick}
+        >
+            <img 
+                src={item.src} 
+                alt={item.title} 
+                loading="lazy" 
+                className={isLoaded ? 'loaded' : ''}
+                onLoad={() => setIsLoaded(true)}
+            />
+
+            <div className="masonry-overlay">
+                <div className="overlay-icon">
+                    {item.category === 'video' ? (
+                        <Play size={24} />
+                    ) : item.category === 'audio' ? (
+                        <Music size={24} />
+                    ) : (
+                        <ZoomIn size={24} />
+                    )}
+                </div>
+                <div className="masonry-caption">
+                    <h4>{item.title}</h4>
+                    {description && <p>{description}</p>}
+                </div>
+            </div>
+        </div>
+    );
+}
+
 export default function EditingTab() {
     const { lang, t } = useLang();
     const [filter, setFilter] = useState<'image' | 'video' | 'audio'>('image');
@@ -83,35 +119,9 @@ export default function EditingTab() {
                 )}
 
                 <div className="masonry-gallery">
-                    {sortedItems.map((item) => {
-                        const description = lang === 'en' && item.description_en ? item.description_en : item.description;
-
-                        return (
-                            <div
-                                key={item.id}
-                                className="masonry-item"
-                                onClick={() => setSelectedItem(item)}
-                            >
-                                <img src={item.src} alt={item.title} loading="lazy" />
-
-                                <div className="masonry-overlay">
-                                    <div className="overlay-icon">
-                                        {item.category === 'video' ? (
-                                            <Play size={24} />
-                                        ) : item.category === 'audio' ? (
-                                            <Music size={24} />
-                                        ) : (
-                                            <ZoomIn size={24} />
-                                        )}
-                                    </div>
-                                    <div className="masonry-caption">
-                                        <h4>{item.title}</h4>
-                                        {description && <p>{description}</p>}
-                                    </div>
-                                </div>
-                            </div>
-                        );
-                    })}
+                    {sortedItems.map((item) => (
+                        <EditingCardItem key={item.id} item={item} lang={lang} onClick={() => setSelectedItem(item)} />
+                    ))}
                 </div>
             </Folder>
 

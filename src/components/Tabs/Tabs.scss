@@ -386,6 +386,15 @@
     }
 }
 
+@keyframes skeletonShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
 .masonry-item {
     break-inside: avoid;
     margin-bottom: 6px;
@@ -401,7 +410,19 @@
         width: 100%;
         height: auto;
         display: block;
-        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        opacity: 0;
+
+        &.loaded {
+            opacity: 1;
+        }
+    }
+
+    &.is-loading {
+        min-height: 180px;
+        background: linear-gradient(90deg, var(--bg-folder) 25%, var(--border) 50%, var(--bg-folder) 75%);
+        background-size: 200% 100%;
+        animation: skeletonShimmer 1.5s infinite;
     }
 
     .media-badge {
