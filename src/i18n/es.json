@@ -1,9 +1,10 @@
 {
   "nav": {
-    "home": "home",
+    "home": "principal",
     "projects": "proyectos",
     "skills": "habilidades"
   },
+
   "home": {
     "greeting": "¡Hola! Soy Pablo, desarrollador Full Stack, y tengo",
     "yearsOld": "años",

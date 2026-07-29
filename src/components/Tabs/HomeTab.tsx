@@ -32,7 +32,27 @@ export default function HomeTab() {
 
                     {t('home.p2')}
                 </p>
+
+                <div style={{ marginTop: '18px', display: 'flex', justifyContent: 'flex-start' }}>
+                    <span 
+                        className="location-tag" 
+                        data-tooltip="Location: Spain > Zaragoza"
+                    >
+                        <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            viewBox="0 0 24 24" 
+                            fill="currentColor" 
+                            width="16" 
+                            height="16"
+                        >
+                            <path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                        </svg>
+                        <span>ESP</span>
+                    </span>
+                </div>
+
             </Folder>
+
 
             <Folder legend={t('home.experienceTitle')} style={{ marginTop: '45px' }}>
                 <div style={{ borderLeft: '2px solid var(--accent)', paddingLeft: '15px' }}>

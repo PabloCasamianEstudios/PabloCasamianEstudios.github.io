@@ -2,45 +2,39 @@
 
 .nav-wrapper {
     background: var(--bg-nav);
-    padding: 6px;
-    border-radius: 14px;
-    border: 2px solid var(--border);
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
     display: inline-flex;
-    gap: 6px;
+    gap: 4px;
     margin-bottom: 20px;
     position: sticky;
     top: 10px;
     z-index: 10;
-    box-shadow: 4px 4px 0px var(--border);
-    transition: $transition;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .nav-btn {
-    padding: 10px 18px;
-    border: 2px solid transparent;
-    border-radius: 10px;
+    padding: 6px 14px;
+    border: 1px solid transparent;
+    border-radius: 6px;
     background: transparent;
-    font-family: var(--font-code);
-    font-size: 12px;
-    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--text-dim);
     cursor: pointer;
     transition: $transition;
 
     &:hover {
-        background: var(--accent);
-        color: #1e293b;
-        border-color: var(--border);
-        transform: translate(-1.5px, -1.5px);
-        box-shadow: 2px 2px 0px var(--border);
+        color: var(--text-main);
+        background: rgba(0, 0, 0, 0.04);
     }
 
     &.active {
         background: var(--accent);
         color: #1e293b;
-        border-color: var(--border);
-        box-shadow: none;
-        transform: translate(1.5px, 1.5px);
+        border-color: transparent;
+        font-weight: 600;
     }
-}
-
+}

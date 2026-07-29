@@ -4,8 +4,8 @@ $bg-nav: #f8fafc;
 $accent: #ABFFB6;
 $text-main: #1e293b;
 $text-dim: #64748b;
-$border: #1e293b;
-$radius: 12px;
+$border: #cbd5e1;
+$radius: 8px;
 $font-code: 'JetBrains Mono', monospace;
 $icon-color: #1e293b;
 
@@ -15,15 +15,15 @@ $bg-nav-dark: #171717;
 $accent-dark: #22c55e;
 $text-main-dark: #e5e5e5;
 $text-dim-dark: #a3a3a3;
-$border-dark: #e5e5e5;
+$border-dark: #333333;
 $icon-color-dark: #ffffff;
 
-$transition: all 0.12s cubic-bezier(0, 0, 0.2, 1);
+$transition: all 0.2s ease-out;
 
 @mixin glassmorphism {
     background: var(--bg-folder);
-    border: 2px solid var(--border);
+    border: 1px solid var(--border);
     border-radius: $radius;
-    box-shadow: 4px 4px 0px var(--border);
-    transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
-}
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}

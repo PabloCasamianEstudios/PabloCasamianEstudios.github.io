@@ -11,6 +11,17 @@
     margin-inline: auto;
     justify-items: stretch;
 
+    .top-actions {
+        position: fixed;
+        top: 35px;
+        right: 35px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+
     main {
         min-width: 0;
         width: 100%;
@@ -23,6 +34,7 @@
         flex-grow: 1;
     }
 }
+
 
 @media (min-width: 900px) {
     .app-shell {

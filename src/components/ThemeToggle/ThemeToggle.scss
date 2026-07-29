@@ -1,29 +1,29 @@
 @use '../../styles/variables' as *;
 
-.theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    background: var(--bg-folder);
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    width: 45px;
-    height: 45px;
+.theme-toggle-icon-only {
+    position: relative;
+    background: transparent;
+    border: none;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 3px 3px 0px var(--border);
-    color: var(--icon-color);
-    transition: transform 0.2s, box-shadow 0.2s, background-color 0.4s, color 0.4s;
+    color: var(--text-main);
+    opacity: 0.8;
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    outline: none;
+    line-height: 1;
 
     &:hover {
-        transform: translateY(-2px);
+        opacity: 1;
+        transform: scale(1.15) rotate(12deg);
+        color: var(--accent-dark, var(--accent));
     }
 
     &:active {
-        transform: translate(2px, 2px);
-        box-shadow: 1px 1px 0px var(--border);
+        transform: scale(0.95);
     }
 }
+
+

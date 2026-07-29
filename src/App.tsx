@@ -15,8 +15,10 @@ export default function App() {
 
     return (
         <div className="app-shell">
-            <ThemeToggle />
-            <LangToggle />
+            <div className="top-actions">
+                <LangToggle />
+                <ThemeToggle />
+            </div>
             <Sidebar />
             <main>
                 <Navigation activeTab={activeTab} onTabChange={switchTab} />

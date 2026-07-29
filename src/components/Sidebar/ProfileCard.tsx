@@ -21,9 +21,9 @@ export default function ProfileCard() {
                 overflow: 'hidden'
             }}>
                 {!imgError ? (
-                    <img 
-                        src="/pablocasamianestudios.png" 
-                        alt="Pablo Casamián" 
+                    <img
+                        src="/pablocasamianestudios.png"
+                        alt="Pablo Casamián"
                         onError={() => setImgError(true)}
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
