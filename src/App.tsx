@@ -5,6 +5,7 @@ import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
 import HomeTab from './components/Tabs/HomeTab';
 import ProjectsTab from './components/Tabs/ProjectsTab';
+import EditingTab from './components/Tabs/EditingTab';
 import SkillsTab from './components/Tabs/SkillsTab';
 import useTabs from './hooks/useTabs';
 import './components/Tabs/Tabs.scss';
@@ -25,6 +26,7 @@ export default function App() {
                 <div className="tab-content">
                     {activeTab === 'home' && <HomeTab />}
                     {activeTab === 'projects' && <ProjectsTab />}
+                    {activeTab === 'editing' && <EditingTab />}
                     {activeTab === 'skills' && <SkillsTab />}
                 </div>
                 <Footer />

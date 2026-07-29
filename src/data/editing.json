@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "title": "Ace — Edit",
+    "src": "/gallery/1.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 2,
+    "title": "Bill — Composition",
+    "src": "/gallery/2.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 3,
+    "title": "Visual Frame Edit",
+    "src": "/gallery/3.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 4,
+    "title": "Deku — Edit",
+    "src": "/gallery/4.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 5,
+    "title": "Diabla — Visual Design",
+    "src": "/gallery/5.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 6,
+    "title": "Gaara — Composition",
+    "src": "/gallery/6.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 7,
+    "title": "Gabi — Edit",
+    "src": "/gallery/7.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 8,
+    "title": "Might Guy 8 Gates",
+    "src": "/gallery/8.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 9,
+    "title": "Jujutsu Kaisen — Edit",
+    "src": "/gallery/9.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 10,
+    "title": "Kazutora — Visual Edit",
+    "src": "/gallery/10.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 11,
+    "title": "Ken Kaneki — Traffic Jam",
+    "src": "/gallery/11.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 12,
+    "title": "Shoto Edit",
+    "src": "/gallery/12.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 13,
+    "title": "Shinra — Edit",
+    "src": "/gallery/13.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 14,
+    "title": "Tanjiro — Composition",
+    "src": "/gallery/14.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 15,
+    "title": "Temari — Visual Design",
+    "src": "/gallery/15.png",
+    "category": "image",
+    "link": ""
+  },
+  {
+    "id": 16,
+    "title": "Tokyo Ghoul — Colab Edit",
+    "src": "/gallery/16.png",
+    "category": "image",
+    "link": ""
+  }
+]

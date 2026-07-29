@@ -13,12 +13,18 @@
 
     .top-actions {
         position: fixed;
-        top: 35px;
-        right: 35px;
+        top: 15px;
+        right: 15px;
         z-index: 1000;
         display: flex;
         align-items: center;
-        gap: 24px;
+        gap: 10px;
+
+        @media (min-width: 900px) {
+            top: 35px;
+            right: 35px;
+            gap: 24px;
+        }
     }
 
 

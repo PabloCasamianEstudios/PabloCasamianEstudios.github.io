@@ -13,6 +13,7 @@ export default function Navigation({ activeTab, onTabChange }: NavigationProps) 
         { key: 'home',     label: t('nav.home') },
         { key: 'projects', label: t('nav.projects') },
         { key: 'skills',   label: t('nav.skills') },
+        { key: 'editing',  label: t('nav.editing') },
     ];
 
     return (

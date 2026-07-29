@@ -11,9 +11,15 @@
     cursor: pointer;
     color: var(--text-main);
     opacity: 0.8;
-    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
     outline: none;
     line-height: 1;
+
+    svg {
+        width: 48px;
+        height: 48px;
+        transition: width 0.2s ease, height 0.2s ease;
+    }
 
     &:hover {
         opacity: 1;
@@ -23,6 +29,27 @@
 
     &:active {
         transform: scale(0.95);
+    }
+}
+
+@media (max-width: 899px) {
+    .theme-toggle-icon-only {
+        background: var(--bg-folder);
+        border: 1px solid var(--border);
+        border-radius: $radius;
+        padding: 6px;
+        min-width: 34px;
+        min-height: 34px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        &:hover {
+            transform: scale(1.08) rotate(12deg);
+        }
     }
 }
 

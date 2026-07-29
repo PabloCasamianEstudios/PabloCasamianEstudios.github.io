@@ -2,7 +2,8 @@
   "nav": {
     "home": "principal",
     "projects": "proyectos",
-    "skills": "habilidades"
+    "skills": "habilidades",
+    "editing": "edición"
   },
 
   "home": {
@@ -41,6 +42,18 @@
   "projects": {
     "code": "código",
     "demo": "demo"
+  },
+  "editing": {
+    "legend": "galería_edicion.media",
+    "introLegend": "sobre_edicion.md",
+    "introP1": "Desde los 10 años he estado aprendiendo de forma autodidacta a utilizar software especializado en edición y diseño de imágenes, vídeos y audio.",
+    "introP2": "A lo largo de los años he experimentado con diversas herramientas de montaje, producción de audio, postproducción y creación gráfica, convirtiendo la edición multimedia en una de mis grandes pasiones.",
+    "subtitle": "Edición visual, audio y contenidos multimedia",
+    "filterAll": "Todo",
+    "filterImages": "Imágenes",
+    "filterVideos": "Vídeos",
+    "filterAudio": "Audio",
+    "visitChannel": "Visitar canal"
   },
   "contact": {
     "copied": "¡Email copiado!",

@@ -317,3 +317,286 @@
         }
     }
 }
+
+/* ==========================================
+   Editing / Media Gallery Styles
+   ========================================== */
+
+.editing-header {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    .editing-subtitle {
+        font-size: 0.9rem;
+        color: var(--text-dim);
+        margin: 0;
+    }
+}
+
+.editing-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .filter-btn {
+        background: var(--bg-nav);
+        border: 1px solid var(--border);
+        color: var(--text-main);
+        padding: 6px 14px;
+        border-radius: 9999px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        &.active {
+            background: var(--accent);
+            color: #1e293b;
+            border-color: var(--accent);
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.masonry-gallery {
+    column-count: 3;
+    column-gap: 6px;
+    margin-top: 10px;
+
+    @media (max-width: 768px) {
+        column-count: 2;
+        column-gap: 6px;
+    }
+
+    @media (max-width: 480px) {
+        column-count: 2;
+        column-gap: 4px;
+    }
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 6px;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: #000;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .media-badge {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        color: #fff;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        z-index: 2;
+    }
+
+    .reyingyang-badge {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: var(--accent);
+        color: #1e293b;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        z-index: 2;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .masonry-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
+        backdrop-filter: blur(2px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 14px;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+        z-index: 3;
+
+        .overlay-icon {
+            align-self: center;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 50%;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transform: scale(0.85);
+            transition: transform 0.25s ease;
+        }
+
+        .masonry-caption {
+            h4 {
+                margin: 0 0 4px 0;
+                font-size: 0.92rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 700;
+                color: #ffffff;
+            }
+
+            p {
+                margin: 0;
+                font-size: 0.78rem;
+                color: rgba(255, 255, 255, 0.8);
+                line-height: 1.35;
+            }
+        }
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+        img {
+            transform: scale(1.04);
+        }
+
+        .masonry-overlay {
+            opacity: 1;
+
+            .overlay-icon {
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+/* Lightbox Modal */
+.lightbox-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(6px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.lightbox-content {
+    background: var(--bg-folder);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    max-width: 800px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+
+    .lightbox-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: var(--accent);
+            color: #1e293b;
+            border-color: var(--accent);
+        }
+    }
+
+    .lightbox-media-container {
+        width: 100%;
+        max-height: 65vh;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        .lightbox-media {
+            max-width: 100%;
+            max-height: 65vh;
+            object-fit: contain;
+        }
+    }
+
+    .lightbox-details {
+        padding: 16px 20px;
+
+        .lightbox-tags {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        h3 {
+            margin: 0 0 6px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+    }
+}

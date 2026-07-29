@@ -2,7 +2,8 @@
   "nav": {
     "home": "home",
     "projects": "projects",
-    "skills": "skills"
+    "skills": "skills",
+    "editing": "editing"
   },
   "home": {
     "greeting": "Hi! I'm Pablo, a Full Stack developer, and I'm",
@@ -40,6 +41,18 @@
   "projects": {
     "code": "code",
     "demo": "demo"
+  },
+  "editing": {
+    "legend": "editing_gallery.media",
+    "introLegend": "about_editing.md",
+    "introP1": "Since I was 10 years old, I have been self-taught in using specialized software for image, video, and audio editing and design.",
+    "introP2": "Over the years I have experimented with various editing, sound production, post-production, and graphic creation tools, making multimedia editing one of my passions.",
+    "subtitle": "Visual edits, audio, and media highlights",
+    "filterAll": "All",
+    "filterImages": "Images",
+    "filterVideos": "Videos",
+    "filterAudio": "Audio",
+    "visitChannel": "Visit channel"
   },
   "contact": {
     "copied": "Email copied!",
