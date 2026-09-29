@@ -13,15 +13,14 @@ export default function ThemeToggle() {
             title={theme === 'light' ? 'Cambiar a Modo Oscuro' : 'Cambiar a Modo Claro'}
         >
             {theme === 'light' ? (
-                <Moon size={48} fill="currentColor" />
+                <Moon size={18} fill="currentColor" />
             ) : (
-                <Sun size={48} fill="currentColor" />
+                <Sun size={18} fill="currentColor" />
             )}
-
-
         </button>
     );
 }
+
 
 
 
