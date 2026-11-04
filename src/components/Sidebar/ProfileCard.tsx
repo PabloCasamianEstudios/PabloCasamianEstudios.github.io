@@ -7,10 +7,10 @@ export default function ProfileCard() {
 
     return (
         <Folder legend="pablo.casamian" bodyStyle={{ textAlign: 'center' }}>
-            <div style={{
+            <div className="profile-photo-frame" style={{
                 width: '60px',
                 height: '60px',
-                background: imgError ? 'var(--accent)' : 'transparent',
+                background: imgError ? 'var(--accent)' : '#f0f0f0',
                 borderRadius: '14px',
                 margin: '0 auto 12px',
                 border: '2px solid var(--border)',
@@ -24,6 +24,7 @@ export default function ProfileCard() {
                     <img
                         src="/pablocasamianestudios.png"
                         alt="Pablo Casamián"
+                        className="profile-photo"
                         onError={() => setImgError(true)}
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />

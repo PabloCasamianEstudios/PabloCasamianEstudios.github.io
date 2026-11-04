@@ -1,0 +1,471 @@
+.notebook {
+    --paper: #f7f3ea;
+    --cover: #2b2b2e;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .7 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    // Tamaño de página: cabe en alto y en ancho (dos páginas)
+    --page-h: min(78vh, calc(44vw / 0.7));
+    --page-w: calc(var(--page-h) * 0.7);
+    --flip-ms: 1100ms;
+
+    transform: perspective(1600px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    /* 3D real en toda la cadena: así se ve el grosor del cuaderno al inclinarlo */
+    transform-style: preserve-3d;
+    // Waits below the page until the drawings are decoded, then slides up
+    translate: 0 110vh;
+    transition:
+        transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+        translate 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, translate;
+
+    &--ready {
+        translate: 0 0;
+    }
+
+    .stage {
+        transform-style: preserve-3d;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(-10px) rotate(-0.6deg); }
+        50% { transform: translateY(10px) rotate(0.6deg); }
+    }
+
+    .book {
+        position: relative;
+        width: calc(var(--page-w) * 2);
+        height: var(--page-h);
+        transform-style: preserve-3d;
+        transition: transform var(--flip-ms) cubic-bezier(0.645, 0.045, 0.355, 1);
+        /* El gesto de arrastrar lo gestiona el cuaderno, no el navegador */
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+    }
+
+    /* Centrar la portada cuando está cerrado y la contraportada al final */
+    .book--closed { transform: translateX(-25%); }
+    .book--ended { transform: translateX(25%); }
+
+    /* Sombra bajo el cuaderno: se desplaza al lado contrario del cursor */
+    .book::after {
+        content: '';
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        bottom: -50px;
+        height: 34px;
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.28), transparent 70%);
+        filter: blur(10px);
+        transform: translate3d(var(--sx, 0px), var(--sy, 0px), -2px);
+        transition:
+            transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+            left var(--flip-ms) cubic-bezier(0.645, 0.045, 0.355, 1),
+            right var(--flip-ms) cubic-bezier(0.645, 0.045, 0.355, 1);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    /* Cerrado solo hay media anchura de cuaderno: la sombra se ajusta a ella */
+    .book--closed::after { left: 54%; right: 4%; }
+    .book--ended::after { left: 4%; right: 54%; }
+
+    /* ---------- Hojas ---------- */
+    .leaf {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 50%;
+        height: 100%;
+        transform-origin: left center;
+        transform-style: preserve-3d;
+        /* Capa propia ya rasterizada: evita destellos al empezar a girar */
+        will-change: transform;
+        transform: translateZ(var(--z)) rotateY(0deg);
+        transition: transform var(--flip-ms) cubic-bezier(0.645, 0.045, 0.355, 1);
+        pointer-events: none;
+    }
+
+    .leaf--top {
+        pointer-events: auto;
+        cursor: pointer;
+    }
+
+    .leaf--flipped {
+        transform: translateZ(var(--z)) rotateY(-180deg);
+    }
+
+    /* La hoja de arriba se levanta un poco al pasar el ratón, pero nunca mientras otra gira:
+          se cruzaría con la hoja en el aire y el navegador ordenaría mal las capas.
+          Solo con ratón: en el móvil el :hover se queda pegado después de tocar */
+    @media (hover: hover) {
+        .book:not(.book--busy) .leaf--top:hover {
+            transform: translateZ(var(--z)) rotateY(-7deg);
+            transition-duration: 350ms;
+        }
+
+        .book:not(.book--busy) .leaf--top.leaf--flipped:hover {
+            transform: translateZ(var(--z)) rotateY(-173deg);
+        }
+    }
+
+    /* La hoja sigue al dedo: la transición corta suaviza los saltos entre eventos táctiles */
+    .leaf--dragging {
+        transform: translateZ(var(--z)) rotateY(var(--angle));
+        transition: transform 80ms linear;
+    }
+
+    .leaf--dragging .turn-shade {
+        opacity: var(--shade, 0);
+    }
+
+    /* Al soltar, cae desde donde esté en lugar de repetir el giro completo */
+    .leaf--settling {
+        transition-duration: var(--settle-ms);
+        transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .leaf--settling .turn-shade {
+        transition: opacity var(--settle-ms) ease-out;
+    }
+
+    /* La hoja que gira no proyecta sombra exterior: la sombra va sobre la página de debajo */
+    .leaf--turning .face {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Sombra que la hoja proyecta sobre la página de debajo */
+    .cast {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        opacity: 0;
+        transform: translateZ(var(--z));
+        pointer-events: none;
+    }
+
+    .cast--right {
+        left: 50%;
+        transform-origin: left center;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.15) 50%, transparent);
+    }
+
+    .cast--left {
+        left: 0;
+        transform-origin: right center;
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.15) 50%, transparent);
+    }
+
+    .book--fwd .cast--right,
+    .book--bwd .cast--left {
+        animation: cast-first var(--flip-ms) cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    .book--fwd .cast--left,
+    .book--bwd .cast--right {
+        animation: cast-second var(--flip-ms) cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    @keyframes cast-first {
+        0% { opacity: 0; scale: 1 1; }
+        15% { opacity: 1; scale: 0.9 1; }
+        50%, 100% { opacity: 0; scale: 0 1; }
+    }
+
+    @keyframes cast-second {
+        0%, 50% { opacity: 0; scale: 0 1; }
+        85% { opacity: 1; scale: 0.9 1; }
+        100% { opacity: 0; scale: 1 1; }
+    }
+
+    /* La cara se oscurece de forma suave al inclinarse respecto a la luz */
+    .turn-shade {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .face--front .turn-shade {
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.3));
+    }
+
+    .face--back .turn-shade {
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.3));
+    }
+
+    .leaf--fwd .face--front .turn-shade,
+    .leaf--bwd .face--back .turn-shade {
+        animation: shade-in var(--flip-ms) cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    .leaf--fwd .face--back .turn-shade,
+    .leaf--bwd .face--front .turn-shade {
+        animation: shade-out var(--flip-ms) cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    @keyframes shade-in {
+        0% { opacity: 0; }
+        50%, 100% { opacity: 1; }
+    }
+
+    @keyframes shade-out {
+        0%, 50% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
+    .face {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        background: var(--paper);
+        /* Solo un filo: la sombra exterior la pone el bloque de páginas (.edges) una sola vez */
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+
+    .face--front {
+        border-radius: 2px 8px 8px 2px;
+    }
+
+    .face--back {
+        transform: rotateY(180deg);
+        border-radius: 8px 2px 2px 8px;
+    }
+
+    /* Grano de papel sobre todas las caras */
+    .face::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--grain);
+        opacity: 0.12;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+    }
+
+    /* Las fotos se recortan para llenar la página */
+    .face img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    /* Sombreado del lomo para dar volumen */
+    .shade {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    .face--front .shade {
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.06) 6%, transparent 14%,
+                transparent 92%, rgba(255, 255, 255, 0.08) 100%);
+    }
+
+    .face--back .shade {
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.06) 6%, transparent 14%,
+                transparent 92%, rgba(255, 255, 255, 0.08) 100%);
+    }
+
+    /* ---------- Portada y contraportada: tapa dura con grano y costura ---------- */
+    .face--cover,
+    .face--backcover {
+        background:
+            var(--grain),
+            radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.08), transparent 60%),
+            radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.35) 100%),
+            var(--cover);
+        background-size: 180px 180px, 100% 100%, 100% 100%, 100% 100%;
+        box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+            inset 0 2px 3px rgba(255, 255, 255, 0.08),
+            inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .face--cover::after,
+    .face--backcover::after {
+        display: none;
+    }
+
+    /* Pespunte alrededor de la tapa */
+    .face--cover::before,
+    .face--backcover::before {
+        content: '';
+        position: absolute;
+        inset: 12px;
+        border: 1.5px dashed rgba(242, 238, 228, 0.22);
+        border-radius: 6px;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+    }
+
+    /* Yin yang de la portada. Se pinta en blanco y negro puros y el filtro hace el dibujo a mano:
+          ondula el trazo, convierte el negro en transparente (se ve la tapa) y rompe el blanco como tiza */
+    .yinyang {
+        --chalk: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f' x='-8%25' y='-8%25' width='116%25' height='116%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018' numOctaves='3' seed='5' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='14' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeColorMatrix in='d' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0' result='k'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -5 0 0 0 4.3' result='m'/%3E%3CfeComposite in='k' in2='m' operator='in'/%3E%3C/filter%3E%3C/svg%3E#f");
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(var(--page-w) * 0.5);
+        aspect-ratio: 1;
+        border: calc(var(--page-w) * 0.014) solid #fff;
+        border-radius: 50% 48% 52% 49% / 51% 50% 49% 50%;
+        background: linear-gradient(90deg, #fff 50%, #000 50%);
+        filter: var(--chalk);
+        transform: translate(-50%, -50%) rotate(-12deg);
+    }
+
+    .yinyang::before,
+    .yinyang::after {
+        content: '';
+        position: absolute;
+        left: 25%;
+        width: 50%;
+        height: 50%;
+        border-radius: 50%;
+    }
+
+    .yinyang::before {
+        top: 0;
+        background: radial-gradient(circle, #fff 0 26%, #000 28%);
+    }
+
+    .yinyang::after {
+        bottom: 0;
+        background: radial-gradient(circle, #000 0 26%, #fff 28%);
+    }
+
+    .face--blank {
+        background:
+            linear-gradient(rgba(29, 79, 145, 0.12) 1px, transparent 1px) 0 0 / 18px 18px,
+            linear-gradient(90deg, rgba(29, 79, 145, 0.12) 1px, transparent 1px) 0 0 / 18px 18px,
+            var(--paper);
+    }
+
+    /* ---------- Bloque de hojas en 3D: paredes con las líneas de cada hoja ---------- */
+    .block {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        transform-style: preserve-3d;
+        pointer-events: none;
+    }
+
+    .block--right { left: 50%; }
+    .block--left { left: 0; }
+
+    .wall {
+        position: absolute;
+        backface-visibility: hidden;
+        /* Una línea gris por hoja: filo claro + separación oscura */
+        --lines: repeating-linear-gradient(var(--dir), hsl(40 6% 80%) 0 1.6px, hsl(40 6% 58%) 1.6px 2.5px);
+        background: var(--lines);
+        transition:
+            width var(--flip-ms) cubic-bezier(0.645, 0.045, 0.355, 1),
+            height var(--flip-ms) cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    /* Canto exterior (vertical): se levanta 90° desde el borde de la página */
+    .wall--outer {
+        top: 0;
+        width: var(--h);
+        height: 100%;
+        --dir: 90deg;
+        filter: brightness(0.92);
+    }
+
+    .block--right .wall--outer {
+        right: 0;
+        transform-origin: right center;
+        transform: rotateY(90deg);
+    }
+
+    .block--left .wall--outer {
+        left: 0;
+        transform-origin: left center;
+        transform: rotateY(-90deg);
+        --dir: 270deg;
+    }
+
+    /* Lado del lomo: se ve con el cuaderno cerrado */
+    .wall--inner {
+        top: 0;
+        width: var(--h);
+        height: 100%;
+        --dir: 90deg;
+        filter: brightness(0.7);
+    }
+
+    .block--right .wall--inner {
+        left: 0;
+        transform-origin: left center;
+        transform: rotateY(-90deg);
+    }
+
+    .block--left .wall--inner {
+        right: 0;
+        transform-origin: right center;
+        transform: rotateY(90deg);
+    }
+
+    /* Cantos de arriba y abajo */
+    .wall--top,
+    .wall--bottom {
+        left: 0;
+        width: 100%;
+        height: var(--h);
+    }
+
+    .wall--top {
+        top: 0;
+        transform-origin: center top;
+        transform: rotateX(90deg);
+        --dir: 0deg;
+    }
+
+    .wall--bottom {
+        bottom: 0;
+        transform-origin: center bottom;
+        transform: rotateX(-90deg);
+        --dir: 180deg;
+        filter: brightness(0.8);
+    }
+
+    /* ---------- Espiral central ---------- */
+    .spiral {
+        position: absolute;
+        top: 3%;
+        bottom: 3%;
+        left: 50%;
+        width: 26px;
+        margin-left: -13px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transform: translateZ(var(--z));
+        pointer-events: none;
+        transition: opacity 300ms;
+    }
+
+    .spiral span {
+        display: block;
+        height: 8px;
+        border-radius: 6px;
+        background: linear-gradient(180deg, #e8e8ea, #8a8c92 60%, #55575c);
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .stage {
+            animation: none;
+        }
+    }
+}

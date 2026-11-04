@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { ZoomIn, X, ExternalLink, Play, Image as ImageIcon, Video, Music } from 'lucide-react';
 import { useLang } from '../../context/LanguageContext';
+import BackLink from '../BackLink/BackLink';
 import Folder from '../Folder/Folder';
+import PageHero from '../PageHero/PageHero';
 import YoutubeCard from '../YoutubeCard/YoutubeCard';
 import editingData from '../../data/editing.json';
+import './EditingPage.scss';
 
 interface EditingItem {
     id: number;
@@ -57,7 +60,7 @@ function EditingCardItem({ item, lang, onClick }: { item: EditingItem; lang: str
     );
 }
 
-export default function EditingTab() {
+export default function EditingPage() {
     const { lang, t } = useLang();
     const [filter, setFilter] = useState<'image' | 'video' | 'audio'>('image');
     const [selectedItem, setSelectedItem] = useState<EditingItem | null>(null);
@@ -67,16 +70,15 @@ export default function EditingTab() {
         .filter((item) => item.category === filter) as EditingItem[];
 
     return (
-        <div id="editing" className="tab-pane">
-            <Folder legend={t('editing.introLegend')}>
-                <p style={{ margin: 0, lineHeight: 1.8, fontSize: '0.98rem', color: 'var(--text-main)' }}>
-                    {t('editing.introP1')}
-                    <br /><br />
-                    {t('editing.introP2')}
-                </p>
-            </Folder>
+        <div id="editing" className="editing-page">
+            <BackLink href="#/" />
 
-            <Folder legend={t('editing.legend')} style={{ marginTop: '35px' }}>
+            <PageHero title={t('nav.editing')} subtitle={t('editing.subtitle')}>
+                <p>{t('editing.introP1')}</p>
+                <p>{t('editing.introP2')}</p>
+            </PageHero>
+
+            <Folder legend={t('editing.legend')}>
                 <div className="editing-header">
                     <div className="editing-filters">
                         <button

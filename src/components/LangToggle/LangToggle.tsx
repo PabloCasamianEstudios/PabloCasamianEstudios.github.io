@@ -11,7 +11,9 @@ export default function LangToggle() {
             title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
             aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
         >
-            {lang === 'es' ? 'EN' : 'ES'}
+            <span className={lang === 'es' ? 'active' : ''}>es</span>
+            <span className="separator">/</span>
+            <span className={lang === 'en' ? 'active' : ''}>en</span>
         </button>
     );
 }

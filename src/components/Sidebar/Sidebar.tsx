@@ -1,6 +1,7 @@
 import ProfileCard from './ProfileCard';
 import LocationCard from './LocationCard';
 import ContactCard from './ContactCard';
+import DrawerCard from './DrawerCard';
 import './Sidebar.scss';
 
 export default function Sidebar() {
@@ -9,6 +10,7 @@ export default function Sidebar() {
             <ProfileCard />
             <LocationCard />
             <ContactCard />
+            <DrawerCard />
         </aside>
     );
 }

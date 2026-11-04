@@ -12,15 +12,7 @@ export default function ThemeToggle() {
             aria-label="Alternar tema"
             title={theme === 'light' ? 'Cambiar a Modo Oscuro' : 'Cambiar a Modo Claro'}
         >
-            {theme === 'light' ? (
-                <Moon size={18} fill="currentColor" />
-            ) : (
-                <Sun size={18} fill="currentColor" />
-            )}
+            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
         </button>
     );
 }
-
-
-
-

@@ -5,17 +5,16 @@
     "skills": "habilidades",
     "editing": "edición"
   },
-
   "home": {
     "greeting": "¡Hola! Soy Pablo, desarrollador Full Stack, y tengo",
     "yearsOld": "años",
     "p1": "Desde pequeño siempre me ha gustado crear cosas. Con el tiempo descubrí en la programación la mejor forma de convertir ideas en proyectos reales.",
-    "p2": "Actualmente trabajo desarrollando software apoyado por IA, utilizando herramientas como VS Code y GitHub Copilot para acelerar procesos, experimentar y construir soluciones de forma más eficiente.",
+    "p2": "Actualmente trabajo desarrollando software apoyado por IA, utilizando herramientas como Claude Code para acelerar procesos, experimentar y construir soluciones de forma más eficiente.",
     "experienceTitle": "experience.log",
     "exp1": {
       "period": "2026 - Actualidad",
       "role": "Desarrollador Junior",
-      "desc": "Desarrollo de software para el sector asegurador."
+      "desc": "Desarrollo y mantenimiento de servicios web REST y SOAP, y procesos batch para el sector asegurador, usando Java, Spring y MySQL."
     },
     "exp2": {
       "period": "2025 - 2026",
@@ -41,15 +40,14 @@
   },
   "projects": {
     "code": "código",
-    "demo": "demo"
+    "demo": "demo",
+    "potpourri": "POPURRÍ DE PROYECTOS"
   },
   "editing": {
     "legend": "galería_edicion.media",
-    "introLegend": "sobre_edicion.md",
     "introP1": "Desde los 10 años he estado aprendiendo de forma autodidacta a utilizar software especializado en edición y diseño de imágenes, vídeos y audio.",
     "introP2": "A lo largo de los años he experimentado con diversas herramientas de montaje, producción de audio, postproducción y creación gráfica, convirtiendo la edición multimedia en una de mis grandes pasiones.",
     "subtitle": "Edición visual, audio y contenidos multimedia",
-    "filterAll": "Todo",
     "filterImages": "Imágenes",
     "filterVideos": "Vídeos",
     "filterAudio": "Audio",
@@ -58,5 +56,21 @@
   "contact": {
     "copied": "¡Email copiado!",
     "downloadCv": "Descargar CV"
+  },
+  "drawer": {
+    "legend": "cajon_desastre/",
+    "click": "CLICK AQUÍ",
+    "introStart": "Disfruto demasiado de ",
+    "introHighlight": "aprender y crear",
+    "introEnd": ", aunque a veces solo se queden en prototipos."
+  },
+  "common": {
+    "back": "volver",
+    "close": "Cerrar"
+  },
+  "drawings": {
+    "name": "dibujos",
+    "title": "cosas del ying",
+    "alt": "Dibujo"
   }
 }

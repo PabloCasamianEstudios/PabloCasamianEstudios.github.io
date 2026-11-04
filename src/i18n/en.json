@@ -9,12 +9,12 @@
     "greeting": "Hi! I'm Pablo, a Full Stack developer, and I'm",
     "yearsOld": "years old",
     "p1": "I've always loved creating things since I was a kid. Over time I discovered that programming is the best way to turn ideas into real projects.",
-    "p2": "I currently work developing AI-assisted software, using tools like VS Code and GitHub Copilot to speed up processes, experiment, and build solutions more efficiently.",
+    "p2": "I currently work developing AI-assisted software, using tools like Claude Code to speed up processes, experiment, and build solutions more efficiently.",
     "experienceTitle": "experience.log",
     "exp1": {
       "period": "2026 - Present",
       "role": "Junior Developer",
-      "desc": "Software development for the insurance industry."
+      "desc": "Development and maintenance of REST and SOAP web services and batch processes for the insurance industry, using Java, Spring and MySQL."
     },
     "exp2": {
       "period": "2025 - 2026",
@@ -40,15 +40,14 @@
   },
   "projects": {
     "code": "code",
-    "demo": "demo"
+    "demo": "demo",
+    "potpourri": "PROJECT POTPOURRI"
   },
   "editing": {
     "legend": "editing_gallery.media",
-    "introLegend": "about_editing.md",
     "introP1": "Since I was 10 years old, I have been self-taught in using specialized software for image, video, and audio editing and design.",
     "introP2": "Over the years I have experimented with various editing, sound production, post-production, and graphic creation tools, making multimedia editing one of my passions.",
     "subtitle": "Visual edits, audio, and media highlights",
-    "filterAll": "All",
     "filterImages": "Images",
     "filterVideos": "Videos",
     "filterAudio": "Audio",
@@ -57,5 +56,21 @@
   "contact": {
     "copied": "Email copied!",
     "downloadCv": "Download CV"
+  },
+  "drawer": {
+    "legend": "junk_drawer/",
+    "click": "CLICK HERE",
+    "introStart": "I enjoy ",
+    "introHighlight": "learning and creating",
+    "introEnd": " too much, even if they sometimes stay as prototypes."
+  },
+  "common": {
+    "back": "back",
+    "close": "Close"
+  },
+  "drawings": {
+    "name": "drawings",
+    "title": "cosas del ying",
+    "alt": "Drawing"
   }
 }

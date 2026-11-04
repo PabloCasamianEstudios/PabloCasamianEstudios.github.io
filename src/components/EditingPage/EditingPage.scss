@@ -1,0 +1,13 @@
+.editing-page {
+    animation: fadeIn 0.3s ease-out;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+
+    .masonry-gallery {
+        @media (min-width: 901px) {
+            column-count: 4;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+@use '../../styles/variables' as *;
+
+.page-hero {
+    padding: 24px 0 8px;
+
+    h1 {
+        font-family: $font-code;
+        font-size: clamp(2.2rem, 8vw, 4rem);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+        text-transform: lowercase;
+    }
+}
+
+.page-hero-subtitle {
+    margin-top: 8px;
+    color: var(--text-dim);
+}
+
+.page-hero-body {
+    margin-top: 20px;
+    display: grid;
+    gap: 12px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+
+    @media (min-width: 700px) {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+}

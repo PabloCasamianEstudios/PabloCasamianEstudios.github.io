@@ -1,4 +1,6 @@
+import { Fragment } from 'react';
 import ProjectCard from './ProjectCard';
+import ProjectsBox from './ProjectsBox';
 import projectsData from '../../data/projects.json';
 
 export default function ProjectsTab() {
@@ -7,12 +9,14 @@ export default function ProjectsTab() {
     return (
         <div id="projects" className="tab-pane">
             <div className="projects-grid">
-                {sortedProjects.map((project) => (
-                    <ProjectCard 
-                        key={project.id} 
-                        {...project} 
-                        icon={project.icon as 'gamepad' | 'box'} 
-                    />
+                {sortedProjects.map((project, i) => (
+                    <Fragment key={project.id}>
+                        <ProjectCard
+                            {...project}
+                            icon={project.icon as 'gamepad' | 'box'}
+                        />
+                        {i === 0 && <ProjectsBox />}
+                    </Fragment>
                 ))}
             </div>
         </div>

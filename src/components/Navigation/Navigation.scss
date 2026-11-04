@@ -2,7 +2,7 @@
 
 .nav-wrapper {
     background: var(--bg-nav);
-    padding: 4px;
+    padding: 6px;
     border-radius: 8px;
     border: 1px solid var(--border);
     display: flex;
@@ -10,11 +10,10 @@
     max-width: 100%;
     box-sizing: border-box;
     gap: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     position: sticky;
     top: 10px;
     z-index: 10;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     overflow-x: auto;
     scrollbar-width: none;
 
@@ -24,7 +23,7 @@
 
     @media (min-width: 600px) {
         display: inline-flex;
-        width: auto;
+        width: fit-content;
     }
 }
 
@@ -37,10 +36,9 @@
     white-space: nowrap;
     padding: 6px 8px;
     border: 1px solid transparent;
-    border-radius: 6px;
+    border-radius: 4px;
     background: transparent;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     color: var(--text-dim);
     cursor: pointer;
@@ -48,8 +46,8 @@
 
     @media (min-width: 600px) {
         flex: initial;
-        padding: 6px 14px;
-        font-size: 13px;
+        padding: 4px 16px;
+        font-size: 14px;
     }
 
     @media (max-width: 360px) {
@@ -66,7 +64,6 @@
         background: var(--accent);
         color: #1e293b;
         border-color: transparent;
-        font-weight: 600;
     }
 }
 
