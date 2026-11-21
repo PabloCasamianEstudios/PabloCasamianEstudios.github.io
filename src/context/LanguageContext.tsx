@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
 import es from '../i18n/es.json';
 import en from '../i18n/en.json';
 
@@ -44,6 +44,11 @@ function getInitialLang(): Lang {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
     const [lang, setLang] = useState<Lang>(getInitialLang);
+
+    // Screen readers and the browser translator read the page in the right language
+    useEffect(() => {
+        document.documentElement.lang = lang;
+    }, [lang]);
 
     const toggleLang = useCallback(() => {
         setLang(prev => {

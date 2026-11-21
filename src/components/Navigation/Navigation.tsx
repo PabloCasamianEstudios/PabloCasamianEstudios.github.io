@@ -21,6 +21,7 @@ export default function Navigation({ activeTab, onTabChange }: NavigationProps) 
                 <button 
                     key={tab.key}
                     className={`nav-btn ${activeTab === tab.key ? 'active' : ''}`}
+                    aria-current={activeTab === tab.key ? 'page' : undefined}
                     onClick={() => onTabChange(tab.key)}
                 >
                     {tab.label}

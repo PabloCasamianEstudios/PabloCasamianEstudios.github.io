@@ -26,10 +26,12 @@ export default function ProfileCard() {
                         alt="Pablo Casamián"
                         className="profile-photo"
                         onError={() => setImgError(true)}
+                        width={60}
+                        height={60}
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                 ) : (
-                    <User size={30} />
+                    <User size={30} aria-hidden="true" />
                 )}
             </div>
             <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: 800 }}>Pablo Casamián</h3>

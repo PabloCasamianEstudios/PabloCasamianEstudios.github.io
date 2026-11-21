@@ -2,8 +2,28 @@ import useAge from '../../hooks/useAge';
 import Folder from '../Folder/Folder';
 import { useLang } from '../../context/LanguageContext';
 
-export default function HomeTab() {
+// Ticks every 50 ms, so it lives on its own: only this badge re-renders, not the whole tab
+function AgeBadge() {
     const age = useAge('2005-05-21T00:00:00');
+    const { t } = useLang();
+
+    return (
+        <span style={{
+            background: 'var(--accent)',
+            color: '#1e293b',
+            padding: '2px 8px',
+            fontWeight: 800,
+            borderRadius: '6px',
+            fontFamily: 'JetBrains Mono, monospace',
+            fontVariantNumeric: 'tabular-nums',
+            whiteSpace: 'nowrap'
+        }}>
+            {age} {t('home.yearsOld')}
+        </span>
+    );
+}
+
+export default function HomeTab() {
     const { t } = useLang();
 
     return (
@@ -12,17 +32,7 @@ export default function HomeTab() {
                 <p style={{ margin: 0, lineHeight: 1.8, fontSize: '1rem', color: 'var(--text)' }}>
                     {t('home.greeting')}{' '}
 
-                    <span style={{
-                        background: 'var(--accent)',
-                        color: '#1e293b',
-                        padding: '2px 8px',
-                        fontWeight: 800,
-                        borderRadius: '6px',
-                        fontFamily: 'JetBrains Mono, monospace',
-                        whiteSpace: 'nowrap'
-                    }}>
-                        {age} {t('home.yearsOld')}
-                    </span>
+                    <AgeBadge />
 
                     <br /><br />
 
@@ -41,7 +51,8 @@ export default function HomeTab() {
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             viewBox="0 0 24 24" 
-                            fill="currentColor" 
+                            fill="currentColor"
+                            aria-hidden="true"
                             width="16" 
                             height="16"
                         >

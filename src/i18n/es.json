@@ -66,7 +66,9 @@
   },
   "common": {
     "back": "volver",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "toDark": "Cambiar a modo oscuro",
+    "toLight": "Cambiar a modo claro"
   },
   "drawings": {
     "name": "dibujos",

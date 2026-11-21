@@ -82,7 +82,10 @@
         z-index: 99999;
     }
 
-    &:hover {
+    // Keyboard users reach the same tooltip as mouse users
+    &:hover,
+    &:focus-visible,
+    .drawer-app:focus-visible & {
         opacity: 1;
         background: transparent;
         color: var(--accent);

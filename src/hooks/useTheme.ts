@@ -16,6 +16,9 @@ export default function useTheme() {
             root.setAttribute('data-theme', 'light');
             localStorage.setItem('theme', 'light');
         }
+        // Mobile browser bar takes the page colour
+        const bg = getComputedStyle(root).getPropertyValue('--bg-page').trim();
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bg);
     }, [isDark]);
 
     const toggleTheme = () => setIsDark(!isDark);

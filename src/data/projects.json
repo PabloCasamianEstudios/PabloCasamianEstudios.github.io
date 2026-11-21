@@ -58,5 +58,17 @@
         "demoHref": "https://lock-in-training-app.vercel.app/",
         "icon": "box",
         "image": "lockin.png"
+    },
+    {
+        "id": 6,
+        "title": "Despacho 29N",
+        "description": "¿Votarías lo mismo si no supieras de qué partido es cada propuesta?\n\nHe creado un juego corto para comprobarlo: propuestas reales de los programas, sin colores ni logos. Tú decides, y al final ves con quién coincides.",
+        "description_en": "Would you vote the same if you didn't know which party each proposal belongs to?\n\nI created a short game to find out: real policy proposals from the party manifestos, without colours or logos. You decide, and in the end you see who you agree with.",
+        "year": "2026",
+        "tags": ["React", "TS"],
+        "codeHref": "",
+        "demoHref": "https://reyingyang.itch.io/despacho-29n",
+        "icon": "gamepad",
+        "image": "despacho-29n.png"
     }
 ]

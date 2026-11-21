@@ -31,7 +31,15 @@ function EditingCardItem({ item, lang, onClick }: { item: EditingItem; lang: str
     return (
         <div
             className={`masonry-item ${!isLoaded ? 'is-loading' : ''}`}
+            role="button"
+            tabIndex={0}
             onClick={onClick}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onClick();
+                }
+            }}
         >
             <img 
                 src={item.src} 
@@ -133,7 +141,7 @@ export default function EditingPage() {
                         <button 
                             className="lightbox-close" 
                             onClick={() => setSelectedItem(null)}
-                            aria-label="Cerrar"
+                            aria-label={t('common.close')}
                         >
                             <X size={20} />
                         </button>

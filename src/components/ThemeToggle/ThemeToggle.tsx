@@ -1,18 +1,16 @@
 import { Moon, Sun } from 'lucide-react';
 import useTheme from '../../hooks/useTheme';
+import { useLang } from '../../context/LanguageContext';
 import './ThemeToggle.scss';
 
 export default function ThemeToggle() {
     const { theme, toggleTheme } = useTheme();
+    const { t } = useLang();
+    const label = theme === 'light' ? t('common.toDark') : t('common.toLight');
 
     return (
-        <button
-            className="theme-toggle-icon-only"
-            onClick={toggleTheme}
-            aria-label="Alternar tema"
-            title={theme === 'light' ? 'Cambiar a Modo Oscuro' : 'Cambiar a Modo Claro'}
-        >
-            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+        <button className="theme-toggle-icon-only" onClick={toggleTheme} aria-label={label} title={label}>
+            {theme === 'light' ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
         </button>
     );
 }
