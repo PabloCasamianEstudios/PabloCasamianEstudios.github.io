@@ -66,7 +66,7 @@
         "description_en": "Would you vote the same if you didn't know which party each proposal belongs to?\n\nI created a short game to find out: real policy proposals from the party manifestos, without colours or logos. You decide, and in the end you see who you agree with.",
         "year": "2026",
         "tags": ["React", "TS"],
-        "codeHref": "",
+        "codeHref": "https://github.com/PabloCasamianEstudios/Despacho-29N",
         "demoHref": "https://reyingyang.itch.io/despacho-29n",
         "icon": "gamepad",
         "image": "despacho-29n.png"
